@@ -17,7 +17,11 @@ export const RecoverPassword = () => {
         .required('El correo es requerido')
     }),
     onSubmit: (values) => {
-      console.log(values)
+      console.log(values);
+
+      localStorage.setItem('teleprompterToken', 'true');
+
+      navigate('/auth/login');
     }
   });
 

@@ -23,9 +23,14 @@ export const Login = () => {
       password: Yup.string().required('La contraseña es requerido')
     }),
     onSubmit: (values) => {
-      console.log(values)
+      const email = values.email;
+
+      localStorage.setItem('teleprompterToken', 'true');
+      localStorage.setItem('TelepromterUser', email);
+
+      navigate('/dashboard');
     }
-  })
+  });
 
   return (
     <form className="w-full max-w-96" onSubmit={formik.handleSubmit}>

@@ -1,18 +1,21 @@
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export const WrapperLayout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem('teleprompterToken');
 
-    if (token) navigate('/dashboard');
-    else navigate('/auth/login');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (!token) {
+      navigate('/auth/login', { replace: true });
+      return;
+    }
+
+  }, [location.pathname, navigate]);
 
   return (
     <Outlet />
-  )
-}
+  );
+};

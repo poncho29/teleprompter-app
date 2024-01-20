@@ -1,11 +1,12 @@
+import { NavItem } from ".."
 
 export const Navbar = () => {
   return (
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Videos</a></li>
-        <li><a href="#">Mi cuenta</a></li>
+    <nav className="w-full flex flex-grow mb-4">
+      <ul className="w-full">
+        <NavItem to="/dashboard" text="Home" />
+        <NavItem to="/dashboard/videos" text="Videos" />
+        <NavItem to="/dashboard/account" text="Mi Cuenta" />
       </ul>
     </nav>
   )

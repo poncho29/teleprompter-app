@@ -34,7 +34,12 @@ export const Register = () => {
         .required('La confirmación de contraseña es obligatorio'),
     }),
     onSubmit: (values) => {
-      console.log(values)
+      const email = values.email;
+
+      localStorage.setItem('teleprompterToken', 'true');
+      localStorage.setItem('TelepromterUser', email);
+
+      navigate('/dashboard');
     }
   })
 
