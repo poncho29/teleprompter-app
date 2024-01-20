@@ -22,9 +22,9 @@ export const RecoverPassword = () => {
   });
 
   return (
-    <form className="w-96" onSubmit={formik.handleSubmit}>
+    <form className="w-full max-w-96" onSubmit={formik.handleSubmit}>
       <InputText
-        label="Email *"
+        label="Correo electrónico *"
         name="email"
         type="email"
         value={formik.values.email}

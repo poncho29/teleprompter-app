@@ -28,9 +28,9 @@ export const Login = () => {
   })
 
   return (
-    <form className="w-96" onSubmit={formik.handleSubmit}>
+    <form className="w-full max-w-96" onSubmit={formik.handleSubmit}>
       <InputText
-        label="Email *"
+        label="Correo electrónico *"
         name="email"
         type="email"
         value={formik.values.email}
@@ -39,7 +39,7 @@ export const Login = () => {
       />
 
       <InputText
-        label="Password *"
+        label="Contraseña *"
         name="password"
         type="password"
         classContainer="mt-4"
@@ -51,7 +51,7 @@ export const Login = () => {
       <section className="mt-4">
         <Buttom type="submit">Entrar</Buttom>
 
-        <div className="flex justify-around">
+        <div className="flex flex-col justify-around md:flex-row">
           <SpanLink onClick={() => navigate('/auth/register')}>Crear una cuenta</SpanLink>
           <SpanLink onClick={() => navigate('/auth/recover')}>Olvide mi contraseña</SpanLink>
         </div>

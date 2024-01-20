@@ -39,7 +39,7 @@ export const Register = () => {
   })
 
   return (
-    <form className="w-96" onSubmit={formik.handleSubmit}>
+    <form className="w-full max-w-96" onSubmit={formik.handleSubmit}>
       <InputText
         label="Nombre completo *"
         name="name"
@@ -50,7 +50,7 @@ export const Register = () => {
       />
 
       <InputText
-        label="Correo electronico *"
+        label="Correo electrónico *"
         name="email"
         type="email"
         classContainer="mt-4"
