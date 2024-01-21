@@ -11,7 +11,7 @@ export const Sidebar = () => {
     <section
       className={`
         h-full flex flex-col px-4 pb-4 bg-sky-800 overflow-y-auto
-        ${showSidebar ? 'w-[260px]' : 'w-[100px]'}
+        transition-all duration-250 ${showSidebar ? 'w-[260px]' : 'w-[100px]'}
       `}
     >
       <SidebarHeader showSidebar={showSidebar} onShowSidebar={setShowSidebar} />
