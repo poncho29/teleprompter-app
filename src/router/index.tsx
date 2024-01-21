@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { AuthLayout, DashboardLayout, WrapperLayout } from "../layouts";
 
-import { Login, Register } from "../pages";
+import { Home, Login, Register } from "../pages";
 import { RecoverPassword } from "../pages/auth/RecoverPassword";
 
 export const routes = createBrowserRouter([
@@ -35,7 +35,7 @@ export const routes = createBrowserRouter([
         children: [
           {
             path: "/dashboard",
-            element: <div>Home</div>,
+            element: <Home />,
           },
           {
             path: "/dashboard/videos",

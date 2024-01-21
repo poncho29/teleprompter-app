@@ -11,7 +11,7 @@ export const SidebarHeader = ({ showSidebar, onShowSidebar }: Props) => {
   return (
     <div
       className={`
-        sticky top-0 right-0 w-full flex items-center py-4 bg-sky-800
+        sticky top-0 right-0 w-full flex items-center py-3 bg-sky-800
         ${showSidebar ? 'justify-between' : 'justify-center'}
       `}
     >
