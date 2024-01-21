@@ -1,8 +1,7 @@
 // Common
 export * from './common/Buttom';
-export * from './common/Navbar';
-export * from './common/NavItem';
-export * from './common/Sidebar';
+export * from './common/navbar/Navbar';
+export * from './common/sidebar/Sidebar';
 export * from './common/SpanLink';
 
 // Form
