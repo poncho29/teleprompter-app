@@ -42,7 +42,7 @@ export const routes = createBrowserRouter([
             element: <div>Videos</div>,
           },
           {
-            path: "/dashboard/account",
+            path: "/dashboard/profile",
             element: <div>Account</div>,
           },
         ]

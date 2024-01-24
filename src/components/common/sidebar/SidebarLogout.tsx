@@ -26,7 +26,7 @@ export const SidebarLogout = ({ showSidebar }: Props) => {
     >
       <RiLogoutBoxFill color="#FFF" size={24} />
       {showSidebar && (
-        <span className="block w-full text-start text-slate-200 font-medium">Cerrar sesion</span>
+        <span className="block w-full text-start text-slate-200 font-medium">Salir</span>
       )}
     </button>
   )

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { NavItem } from "./NavItem";
+import { NavItem } from "../NavItem";
 
 import { GoHomeFill } from "react-icons/go";
 import { RiFolderVideoFill, RiAccountCircleFill } from "react-icons/ri";
@@ -19,7 +19,7 @@ interface IRoute {
 const routes: IRoute[] = [
   { to: '/dashboard', text: 'Home', end: true, icon: <GoHomeFill color="#FFF" size={24} /> },
   { to: '/dashboard/videos', text: 'Videos', icon: <RiFolderVideoFill color="#FFF" size={24} /> },
-  { to: '/dashboard/account', text: 'Mi cuenta', icon: <RiAccountCircleFill color="#FFF" size={24} /> },
+  { to: '/dashboard/profile', text: 'Perfil', icon: <RiAccountCircleFill color="#FFF" size={24} /> },
 ];
 
 export const Navbar = ({ showSidebar }: Props) => {
