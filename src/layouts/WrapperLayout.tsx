@@ -8,9 +8,10 @@ export const WrapperLayout = () => {
   useEffect(() => {
     const token = localStorage.getItem('teleprompterToken');
 
-    if (!token) {
-      navigate('/auth/login', { replace: true });
-      return;
+    if (!token) return navigate('/auth/login', { replace: true });
+
+    if (token && location.pathname === '/') {
+      navigate('/dashboard', { replace: true })
     }
 
   }, [location.pathname, navigate]);

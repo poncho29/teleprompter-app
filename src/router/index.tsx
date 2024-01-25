@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { AuthLayout, DashboardLayout, WrapperLayout } from "../layouts";
 
-import { Home, Login, Register } from "../pages";
+import { Home, Login, PreviewVideo, Register } from "../pages";
 import { RecoverPassword } from "../pages/auth/RecoverPassword";
 
 export const routes = createBrowserRouter([
@@ -36,6 +36,10 @@ export const routes = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Home />,
+          },
+          {
+            path: "/dashboard/preview",
+            element: <PreviewVideo />
           },
           {
             path: "/dashboard/videos",

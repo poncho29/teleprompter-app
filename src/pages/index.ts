@@ -2,7 +2,12 @@
 export * from './auth/Login';
 export * from './auth/Register';
 
-// Dashboard Pages
-export * from './dashboard/Home';
+// Dashboard Pages Home
+export * from './dashboard/home';
+export * from './dashboard/home/PreviewVideo';
+
+// Dashboard Pages Videos
 export * from './dashboard/Videos';
+
+// Dashboard Pages Account
 export * from './dashboard/Account';
