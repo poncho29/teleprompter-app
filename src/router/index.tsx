@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Link, createBrowserRouter } from "react-router-dom";
 
 import { AuthLayout, DashboardLayout, WrapperLayout } from "../layouts";
 
@@ -36,10 +36,17 @@ export const routes = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Home />,
+            handle: {
+              crumb: () => <Link to="/dashboard">Home</Link>,
+            }
           },
           {
-            path: "/dashboard/preview",
-            element: <PreviewVideo />
+            path: "/dashboard/preview/:id",
+            element: <PreviewVideo />,
+            handle: {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              crumb: () => <span>Preview</span>,
+            }
           },
           {
             path: "/dashboard/videos",

@@ -11,7 +11,7 @@ export const Home = () => {
 
       <Buttom
         customClass="w-32"
-        onClick={() => navigate('/dashboard/preview')}
+        onClick={() => navigate('/dashboard/preview/1')}
       >
         Record Video
       </Buttom>
