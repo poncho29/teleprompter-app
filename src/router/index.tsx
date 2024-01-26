@@ -34,7 +34,7 @@ export const routes = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
           {
-            path: "/dashboard",
+            path: "/dashboard/home",
             element: <Home />,
             handle: {
               crumb: () => <Link to="/dashboard">Home</Link>,
@@ -45,7 +45,7 @@ export const routes = createBrowserRouter([
             element: <PreviewVideo />,
             handle: {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              crumb: () => <span>Preview</span>,
+              crumb: () => { 'Hola' },
             }
           },
           {
