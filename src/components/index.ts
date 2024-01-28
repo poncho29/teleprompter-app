@@ -8,3 +8,4 @@ export * from './common/BreadCrumb';
 
 // Form
 export * from './form/InputText';
+export * from './form/InputCheck';

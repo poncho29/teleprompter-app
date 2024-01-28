@@ -4,7 +4,7 @@ export * from './auth/Register';
 
 // Dashboard Pages Home
 export * from './dashboard/home';
-export * from './dashboard/home/PreviewVideo';
+export * from './dashboard/home/preview-video';
 
 // Dashboard Pages Videos
 export * from './dashboard/Videos';

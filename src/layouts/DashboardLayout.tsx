@@ -8,7 +8,7 @@ export const DashboardLayout = () => {
       <Sidebar />
 
       <main className="w-full overflow-y-auto">
-        <section className="sticky top-0 w-auto h-16 flex items-center justify-between px-6 bg-slate-200">
+        <section className="sticky top-0 w-auto h-16 flex items-center justify-end px-6 bg-slate-200">
           {/* <BreadCrumb /> */}
 
           <AccountMenu />
