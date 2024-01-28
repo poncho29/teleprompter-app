@@ -14,7 +14,7 @@ export const EditorScript = () => {
         <IoSettings size={24} className='cursor-pointer lg:hidden' />
       </div>
 
-      <p className="h-[360px] p-4 mb-4 border border-indigo-600 rounded-xl overflow-y-auto no-scrollbar bg-white">
+      <p className="h-[380px] p-4 mb-4 border border-indigo-600 rounded-xl overflow-y-auto no-scrollbar bg-white">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut omnis aliquam rem totam, doloremque ducimus,
         a voluptatibus error nostrum repudiandae dolores voluptatum? Expeditaesse soluta, ab eius repellendus enim ipsam!
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut omnis aliquam rem totam, doloremque ducimus,
