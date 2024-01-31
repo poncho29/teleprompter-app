@@ -1,5 +1,7 @@
+
 import { EditorScript } from "./EditorScript";
 import { FormSettings } from "./FormSettings";
+import { VideoRecorder } from "../../../../components";
 
 export const PreviewVideo = () => {
   return (
@@ -17,7 +19,7 @@ export const PreviewVideo = () => {
         <div className="mt-6">
           <h5 className="font-semibold mb-2">Previsualización</h5>
 
-          <video src="#" controls className="rounded-xl"></video>
+          <VideoRecorder />
         </div>
       </div>
     </section >

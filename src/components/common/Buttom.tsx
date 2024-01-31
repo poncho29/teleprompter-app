@@ -13,7 +13,7 @@ export const Buttom = ({ customClass, children, ...props }: Props) => {
   return (
     <button
       {...props}
-      className={`button-base ${customClass}`}
+      className={`button-base ${customClass} ${props.disabled && 'opacity-70 hover:bg-none cursor-default'}`}
     >
       {children}
     </button>
