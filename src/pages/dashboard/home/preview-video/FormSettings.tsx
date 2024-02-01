@@ -1,10 +1,26 @@
 import { useState } from "react";
 
+import { useGetMediaDevices } from "../../../../hooks";
+
 import { InputCheck } from "../../../../components";
 
-export const FormSettings = () => {
+interface Props {
+  audioSource: string;
+  videoSource: string;
+  onAudioSource: (value: string) => void;
+  onVideoSource: (value: string) => void;
+}
+
+export const FormSettings = ({
+  audioSource,
+  videoSource,
+  onAudioSource,
+  onVideoSource
+}: Props) => {
   const [fontSize, setFontSize] = useState('normal');
   const [readingSpeed, setReadingSpeed] = useState('normalSpeed');
+
+  const { audioSourceOptions, videoSourceOptions } = useGetMediaDevices();
 
   return (
     <>
@@ -14,7 +30,7 @@ export const FormSettings = () => {
         <div>
           <h5 className="font-semibold">Tamaño de fuente</h5>
 
-          <div className="flex gap-4 pt-2">
+          <div className="flex gap-4 mt-2 overflow-x-auto">
             <InputCheck
               id="small"
               name="size"
@@ -48,7 +64,7 @@ export const FormSettings = () => {
         <div>
           <h5 className="font-semibold">Velocidad de lectura</h5>
 
-          <div className="flex gap-4 pt-2">
+          <div className="flex gap-4 mt-2 overflow-x-auto">
             <InputCheck
               id="slow"
               name="speed"
@@ -76,6 +92,42 @@ export const FormSettings = () => {
               onChange={(e) => setReadingSpeed(e.target.value)}
             />
           </div>
+        </div>
+
+        <div>
+          <h5 className="font-semibold">Fuentes de audio</h5>
+
+          <select
+            id="audioSource"
+            name="audioSource"
+            className="w-full h-11 p-2 mt-2 border-2 border-indigo-800 rounded-xl"
+            value={audioSource}
+            onChange={e => onAudioSource(e.target.value)}
+          >
+            {audioSourceOptions.map(option =>
+              <option key={option.label} value={option.value}>
+                {option.label}
+              </option>
+            )}
+          </select>
+        </div>
+
+        <div>
+          <h5 className="font-semibold">Fuentes de video</h5>
+
+          <select
+            id="videoSource"
+            name="videoSource"
+            className="w-full h-11 p-2 mt-2 border-2 border-indigo-800 rounded-xl"
+            value={videoSource}
+            onChange={e => onVideoSource(e.target.value)}
+          >
+            {videoSourceOptions.map(option =>
+              <option key={option.label} value={option.value}>
+                {option.label}
+              </option>
+            )}
+          </select>
         </div>
       </form>
     </>
