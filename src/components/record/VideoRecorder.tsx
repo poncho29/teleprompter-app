@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { useVideoRecorder } from "../../hooks";
 
@@ -7,16 +7,43 @@ import { Buttom } from "..";
 interface Props {
   audioSource: string;
   videoSource: string;
+  closePopup: () => void;
+  setVideoUrl: (url: string) => void;
 }
 
-export const VideoRecorder = ({ audioSource, videoSource }: Props) => {
+export const VideoRecorder: React.FC<Props> = ({ audioSource, videoSource, closePopup, setVideoUrl }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const videoRecorderContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const { isRecording, urlVideo, startRecording, stopRecording } = useVideoRecorder({
+  const { error, urlVideo, isRecording, startRecording, stopRecording } = useVideoRecorder({
     videoRef, audioSource, videoSource
   });
 
-  console.log(urlVideo);
+  useEffect(() => {
+    if (urlVideo) {
+      setVideoUrl(urlVideo);
+      closePopup();
+    }
+  }, [urlVideo, setVideoUrl, closePopup]);
+
+  useEffect(() => {
+    // Crear un nuevo contenedor en la ventana emergente
+    const newContainer = document.createElement('div');
+    videoRecorderContainerRef.current = newContainer;
+
+    if (videoRef.current) {
+      newContainer.appendChild(videoRef.current);
+    }
+
+    document.body.appendChild(newContainer);
+
+    return () => {
+      // Limpiar al desmontar
+      if (videoRecorderContainerRef.current) {
+        document.body.removeChild(videoRecorderContainerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="w-full">
@@ -32,6 +59,8 @@ export const VideoRecorder = ({ audioSource, videoSource }: Props) => {
         <Buttom disabled={isRecording} onClick={startRecording}>Grabar</Buttom>
         <Buttom disabled={!isRecording} onClick={stopRecording}>Detener</Buttom>
       </div>
+
+      <div>{error && <p>Error: {error.message}</p>}</div>
     </div>
   );
 };

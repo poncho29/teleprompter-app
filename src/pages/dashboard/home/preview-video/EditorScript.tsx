@@ -4,7 +4,11 @@ import { Buttom } from '../../../../components';
 
 import { IoSettings } from 'react-icons/io5';
 
-export const EditorScript = () => {
+interface Props {
+  onOpenRecorder: () => void;
+}
+
+export const EditorScript = ({ onOpenRecorder }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -38,7 +42,7 @@ export const EditorScript = () => {
 
       <div className="flex gap-4">
         <Buttom customClass="w-32" onClick={() => navigate('/dashboard')}>Volver</Buttom>
-        <Buttom customClass="w-32">Grabar</Buttom>
+        <Buttom customClass="w-32" onClick={onOpenRecorder}>Grabar</Buttom>
       </div>
     </>
   )

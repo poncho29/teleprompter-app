@@ -24,13 +24,24 @@ export const useVideoRecorder = ({
 
     if (!streamRef.current) return;
 
+    chunks.current = [];
     streamRecorderRef.current = new MediaRecorder(streamRef.current);
-    streamRecorderRef.current.start();
+
     streamRecorderRef.current.ondataavailable = (event: BlobEvent) => {
       if (chunks.current) {
         chunks.current.push(event.data);
       }
     }
+
+    streamRecorderRef.current.onstop = () => {
+      const blob = new Blob(chunks.current, {
+        type: 'video/x-matroska;codecs=avc1,opus',
+      });
+
+      setUrlVideo(URL.createObjectURL(blob));
+    };
+
+    streamRecorderRef.current.start();
 
     setIsRecording(true);
   }
