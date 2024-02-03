@@ -13,7 +13,6 @@ interface Props {
 
 export const VideoRecorder: React.FC<Props> = ({ audioSource, videoSource, closePopup, setVideoUrl }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const videoRecorderContainerRef = useRef<HTMLDivElement | null>(null);
 
   const { error, urlVideo, isRecording, startRecording, stopRecording } = useVideoRecorder({
     videoRef, audioSource, videoSource
@@ -25,25 +24,6 @@ export const VideoRecorder: React.FC<Props> = ({ audioSource, videoSource, close
       closePopup();
     }
   }, [urlVideo, setVideoUrl, closePopup]);
-
-  useEffect(() => {
-    // Crear un nuevo contenedor en la ventana emergente
-    const newContainer = document.createElement('div');
-    videoRecorderContainerRef.current = newContainer;
-
-    if (videoRef.current) {
-      newContainer.appendChild(videoRef.current);
-    }
-
-    document.body.appendChild(newContainer);
-
-    return () => {
-      // Limpiar al desmontar
-      if (videoRecorderContainerRef.current) {
-        document.body.removeChild(videoRecorderContainerRef.current);
-      }
-    };
-  }, []);
 
   return (
     <div className="w-full">

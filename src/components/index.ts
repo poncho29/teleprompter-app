@@ -1,3 +1,6 @@
+// Layout
+export * from './layout/WindowPortal';
+
 // Common
 export * from './common/Buttom';
 export * from './common/navbar/Navbar';

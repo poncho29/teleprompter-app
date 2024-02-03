@@ -3,12 +3,13 @@ import { useState } from "react";
 
 import { EditorScript } from "./EditorScript";
 import { FormSettings } from "./FormSettings";
-import { VideoRecorder } from "../../../../components";
+import { VideoRecorder, WindowPortal } from "../../../../components";
 
 export const PreviewVideo = () => {
   const [audioSource, setAudioSource] = useState<string>('');
   const [videoSource, setVideoSource] = useState<string>('');
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [isOpenWindow, setIsOpenWindow] = useState(false)
 
   const handleAudioSource = (value: string) => {
     setAudioSource(value);
@@ -19,18 +20,7 @@ export const PreviewVideo = () => {
   }
 
   const handleOpenRecorder = () => {
-    const popup = window.open('', '_blank', 'width=600,height=400');
-    if (popup) {
-      popup.document.title = 'Video Recorder';
-      popup.document.body.innerHTML = '<div id="videoRecorderContainer"></div>';
-
-      const closePopup = () => {
-        popup.close();
-      };
-
-      // Renderizar el componente de grabación en la ventana emergente
-      VideoRecorder({ audioSource, videoSource, closePopup, setVideoUrl });
-    }
+    setIsOpenWindow(!isOpenWindow);
   };
 
   return (
@@ -50,14 +40,16 @@ export const PreviewVideo = () => {
           onVideoSource={handleVideoSource}
         />
 
-        {/* <div className="mt-6">
-          <h5 className="font-semibold mb-2">Previsualización</h5>
-
-          <VideoRecorder
-            audioSource={audioSource}
-            videoSource={videoSource}
-          />
-        </div> */}
+        {isOpenWindow && (
+          <WindowPortal onCloseWindow={(ref) => console.log(ref.current?.close())}>
+            <VideoRecorder
+              audioSource={audioSource}
+              videoSource={videoSource}
+              closePopup={() => setIsOpenWindow(false)}
+              setVideoUrl={(url) => setVideoUrl(url)}
+            />
+          </WindowPortal>
+        )}
 
         <div>
           {videoUrl && (
